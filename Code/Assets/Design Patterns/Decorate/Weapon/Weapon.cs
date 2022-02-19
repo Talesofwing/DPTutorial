@@ -21,10 +21,8 @@ public class Weapon {
 
     public virtual void WrappedWeapon (Weapon weapon) { }
     
-    
-    
     public override string ToString () {
         return "普通武器";
     }
-    
+
 }

@@ -10,8 +10,6 @@ public class Character : MonoBehaviour, IMovable {
 
     private void Awake () {
         m_CacheTf = this.transform;
-        
-        m_Movement = new NotMovement (this);
     }
 
     private void Update () {
@@ -24,17 +22,8 @@ public class Character : MonoBehaviour, IMovable {
 
 #region Strategy
 
-    public void SetMovement (int id) {
-        if (id == 0) {
-            m_Movement = new NotMovement (this);
-            Debug.Log ("已切換到 「不動」");
-        } else if (id == 1) {
-            m_Movement = new MoveForwardMovement (this);
-            Debug.Log ("已切換到 「向前移動」");
-        } else if (id == 2) {
-            m_Movement = new MoveBackMovement (this);
-            Debug.Log ("已切換到 「向後移動」");
-        }
+    public void SetMovement (BaseMovement movement) {
+        m_Movement = movement;
     }
 
 #endregion
