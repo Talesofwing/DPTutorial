@@ -11,7 +11,7 @@ public class FireGem : BaseGem {
     }
     
     public override string Show () {
-        return base.Show() + ", 冰凍寶石";
+        return base.Show() + ", 火焰寶石";
     }
     
     public override string ToString () {

@@ -20,4 +20,8 @@ public class TWFactory : ILocalizationFactory {
         return null;
     }
     
+    public string GetName () {
+        return "熊";
+    }
+    
 }

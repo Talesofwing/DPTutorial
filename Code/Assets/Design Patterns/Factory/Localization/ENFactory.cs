@@ -19,5 +19,9 @@ public class ENFactory : ILocalizationFactory {
     public Dictionary<int, Sprite> CreateSprites () {
         return null;
     }
+
+    public string GetName () {
+        return "Kuma";
+    }
     
 }

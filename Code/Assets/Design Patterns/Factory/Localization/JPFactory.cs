@@ -20,4 +20,8 @@ public class JPFactory : ILocalizationFactory {
         return null;
     }
     
+    public string GetName () {
+        return "クマ";
+    }
+    
 }

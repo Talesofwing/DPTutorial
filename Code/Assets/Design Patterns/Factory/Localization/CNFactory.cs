@@ -20,4 +20,8 @@ public class CNFactory : ILocalizationFactory {
         return null;
     }
 
+    public string GetName () {
+        return "零君";
+    }
+    
 }

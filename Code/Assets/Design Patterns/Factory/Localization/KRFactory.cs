@@ -20,4 +20,8 @@ public class KRFactory : ILocalizationFactory {
         return null;
     }
 
+    public string GetName () {
+        return "2";
+    }
+    
 }

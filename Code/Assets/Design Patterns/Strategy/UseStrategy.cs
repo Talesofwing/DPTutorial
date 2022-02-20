@@ -21,9 +21,9 @@ public class UseStrategy : MonoBehaviour {
     }
 
     private void SetCharacterMovement () {
+        // Range: [0, 2]
         m_MovementID = (m_MovementID + 1) % 3;
         BaseMovement movement ;
-        
         if (m_MovementID == 0) {
             movement = new NotMovement (m_Character);
             Debug.Log ("已切換到 「不動」");

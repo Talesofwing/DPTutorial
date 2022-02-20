@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public interface ILocalizationFactory {
-    public Dictionary<int, string> Create ();
-    public Dictionary<int, Sprite> CreateSprites ();
+    Dictionary<int, string> Create ();
+    Dictionary<int, Sprite> CreateSprites ();
+    string GetName ();
 }

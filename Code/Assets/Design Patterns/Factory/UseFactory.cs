@@ -63,8 +63,10 @@ public class UseFactory : MonoBehaviour, ILocalizationListener {
         // 我們不需要知道目前是甚麼語言，會得到甚麼語言的工廠
         // 而只需要知道工廠的接口ILocalizationFactory便可，即與「具體工廠類」解耦 <--- 重點理解
         ILocalizationFactory factory = LocalizationSystem.Instance.GetFactory ();
-        Dictionary<int, string> npcNames = factory.Create ();
-        m_Text.text = npcNames[m_TextID];
+        // Dictionary<int, string> npcNames = factory.Create ();
+        // m_Text.text = npcNames[m_TextID];
+
+        m_Text.text = factory.GetName ();
     }
     
 #endregion

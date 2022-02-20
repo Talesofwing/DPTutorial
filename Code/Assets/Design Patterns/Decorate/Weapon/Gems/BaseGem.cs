@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class BaseGem : Weapon {
     protected Weapon m_WrapWeapon;      // 裝飾中的對象
     protected Weapon m_WrappedWeapon;   // 被誰裝飾中?
-    
+
     public BaseGem (Weapon weapon) {
         m_WrapWeapon = weapon;
         weapon.WrappedWeapon (this);
@@ -13,6 +13,10 @@ public abstract class BaseGem : Weapon {
 
     public override void Attack () {
         m_WrapWeapon.Attack ();
+    }
+    
+    public override string Show () {
+        return m_WrapWeapon.Show ();
     }
     
     // 裝飾武器
@@ -44,8 +48,4 @@ public abstract class BaseGem : Weapon {
         }
     }
 
-    public override string Show () {
-        return m_WrapWeapon.Show ();
-    }
-    
 }
