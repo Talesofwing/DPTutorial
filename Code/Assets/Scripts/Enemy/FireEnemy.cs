@@ -1,5 +1,5 @@
 ﻿// 火屬性敵人
-public class FireEnemy  : Enemy{
+public class FireEnemy  : Enemy {
  
 #region Template 方法例子
     
@@ -21,5 +21,4 @@ public class FireEnemy  : Enemy{
     
 #endregion
 
-    
 }

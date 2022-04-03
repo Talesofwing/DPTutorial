@@ -23,10 +23,20 @@ public abstract class Enemy : MonoBehaviour {
 
     public bool Alive { get; protected set; }
 
-    private void Start () {
+    public void SetName (string name) {
+        m_EnemyName = name;
+    }
+    
+    private void Awake () {
+        Debug.Log ("Enemy Awake");
+        
         m_CurrentHealth = m_StartingHealth;
 
         Alive = true;
+    }
+
+    private void Start () {
+        Debug.Log ("Enemy Start");
     }
 
     public virtual void Death () {
@@ -100,5 +110,8 @@ public abstract class Enemy : MonoBehaviour {
     } 
     
 #endregion
-    
+
+    public override string ToString () {
+        return "EnemyName: " + m_EnemyName + " Hp: " + m_CurrentHealth;
+    }
 }
