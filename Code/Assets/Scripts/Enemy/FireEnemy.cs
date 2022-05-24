@@ -1,6 +1,12 @@
 ﻿// 火屬性敵人
 public class FireEnemy  : Enemy {
- 
+    
+    public override EnemyType EType {
+        get {
+            return EnemyType.FireEnemy;
+        }
+    }
+
 #region Template 方法例子
     
     // 能夠受到傷害的條件判斷由子類完成

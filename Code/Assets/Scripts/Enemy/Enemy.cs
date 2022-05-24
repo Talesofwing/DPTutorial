@@ -9,6 +9,10 @@ public enum AttackType {
     Lighting,
 }
 
+public enum EnemyType {
+    FireEnemy,
+}
+
 // 攻擊數據
 public struct AttackData {
     public int Damage;
@@ -16,9 +20,12 @@ public struct AttackData {
 }
 
 public abstract class Enemy : MonoBehaviour {
-    [SerializeField] private string m_EnemyName = "CL";
+    // 因為享元模式，所以name可以去掉 (但是在原型模式中有使用，所以保留)
+    [SerializeField] private string m_EnemyName;
     [SerializeField] private int m_StartingHealth;
 
+    private EnemyBaseAttr m_Attr;
+    
     private int m_CurrentHealth = 0;
 
     public bool Alive { get; protected set; }
@@ -27,8 +34,16 @@ public abstract class Enemy : MonoBehaviour {
         m_EnemyName = name;
     }
     
+    public abstract EnemyType EType {
+        get;
+    }
+    
     private void Awake () {
         Debug.Log ("Enemy Awake");
+
+        // 每一次的Get都會有一定的性能損耗
+        m_Attr = AttrFactory.Instance.GetEnemyBaseAttr (EType);
+        Debug.Log ("Enemy Attr: " + m_Attr);
         
         m_CurrentHealth = m_StartingHealth;
 
@@ -41,14 +56,14 @@ public abstract class Enemy : MonoBehaviour {
 
     public virtual void Death () {
         if (Alive) {
-            Debug.Log (m_EnemyName + " 死亡!");
+            Debug.Log (m_Attr.Name + " 死亡!");
 
             Alive = false;
         }
     }
 
     public virtual void Reset () {
-        Debug.Log (m_EnemyName + " 已重置!");
+        Debug.Log (m_Attr.Name + " 已重置!");
         
         Alive = true;
         m_CurrentHealth = m_StartingHealth;
@@ -60,10 +75,10 @@ public abstract class Enemy : MonoBehaviour {
     // 首先利用TakeDamageCondition判斷是否會受到傷害
     // 再利用CalculateDamage來計算傷害量
     public virtual void TakeDamage (AttackData data) {
-        Debug.Log (m_EnemyName + " 受到 " + AttackType2Chinese (data.Type) + data.Damage + " 點傷害");
+        Debug.Log (m_Attr.Name + " 受到 " + AttackType2Chinese (data.Type) + data.Damage + " 點傷害");
         
         if (!Alive) {
-            Debug.Log (m_EnemyName + " 已經死亡!");
+            Debug.Log (m_Attr.Name + " 已經死亡!");
             return;
         }
         
@@ -72,12 +87,12 @@ public abstract class Enemy : MonoBehaviour {
             // 計算傷害 (由子類計算)
             int damage = CalculateDamage (data);
             m_CurrentHealth -= damage;
-            Debug.Log (m_EnemyName + " 失去了 " + damage + " 點生命值");
+            Debug.Log (m_Attr.Name + " 失去了 " + damage + " 點生命值");
             
             if (m_CurrentHealth <= 0) {
                 Death ();
             } else {
-                Debug.Log (m_EnemyName + "剩餘生活值: " + m_CurrentHealth);
+                Debug.Log (m_Attr.Name + "剩餘生活值: " + m_CurrentHealth);
             }
         }
     }
@@ -112,6 +127,6 @@ public abstract class Enemy : MonoBehaviour {
 #endregion
 
     public override string ToString () {
-        return "EnemyName: " + m_EnemyName + " Hp: " + m_CurrentHealth;
+        return "EnemyName: " + m_Attr.Name + " Hp: " + m_CurrentHealth;
     }
 }
