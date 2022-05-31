@@ -7,7 +7,15 @@ public class FireEnemy  : Enemy {
         }
     }
 
-#region Template 方法例子
+#region Visitor
+    
+    public override void Visit (IEnemyVisitor visitor) {
+        visitor.Visit (this);
+    }
+    
+#endregion
+    
+#region Template 例子
     
     // 能夠受到傷害的條件判斷由子類完成
     protected override bool TakeDamageCondition (AttackData data) {
