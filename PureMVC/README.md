@@ -27,9 +27,9 @@ PureMVC在Model層上再引入了Proxy層，在View層上再引入了Mediator層
 
 ## PureMVC的模塊
 ### Mediator & View
-每一個Mediator對應一個UI頁面，而Mediator中會有一個ListNotifications，包含了這個Mediator所感興趣的Notification，在創建的時候就會自動地往View上注冊Observer。並且會有一個名為HandleNotification的方法作為callback。
+每一個Mediator對應一個UI頁面，而Mediator中會有一個ListNotifications，包含了這個Mediator所感興趣的Notification，在創建的時候就會自動地在View上注冊Observer。並且會有一個名為HandleNotification的方法作為callback。
 
-由於Mediator會很頻繁訪問Proxy，所以Mediator會保留Proxy的引用，方便使用。
+由於Mediator會很頻繁訪問Proxy以及UI，所以Mediator會保留Proxy和UI的引用，方便使用。
 
 ### Command & Controller
 
@@ -51,6 +51,9 @@ PureMVC中包含了Notifier、Observer以及Notification三個類來實現通知
 ### Facade
 是Controller、View、Model的一個管理者，他提供了所有接口，除了Command會用到外，也方便外部的調用，例如在例子中的Application就調用了Facade中的Launch，來執行啟動的操作。
 
+# 例子中的流程
+
+
 # 在學習過程中遇到的問題以及思考
 Q. 為甚麼在Model層中的是Proxy? 而在View層中的是Mediator?
 
@@ -58,7 +61,8 @@ A. Proxy相當於Model，它與Model是同源的，是Model的一個代理人。
 
 Q. 為甚麼Command也要在View中注冊Observer?
 
-A. 個人認為是為了方便管理。如果在Command中創建一個ObserverMap管理事件的監聽並執行Command，那麼就會出現兩個地方都需要維護通知系統。直接將所有監聽的責任全部交由View來處理，更加方便。
+A. 個人認為是為了方便管理。Controller在接受到通知後，創建Command，並執行。因此，Controller也需要Observer來監聽事件。而監聽的責任已經全部交由View來處理，所以Controller中的監聽也放到View中管理。
+
 
 # 參考資料
 - [Github - PureMVC](https://github.com/PureMVC/puremvc-csharp-standard-framework)
