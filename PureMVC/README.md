@@ -3,7 +3,9 @@ Unity version: 2020.3.14f1
 ```
 
 # 前言
-這個例子是對照[PureMVC框架在Unity中的應用例子](https://github.com/kenrivcn/PureMVC_Demo)開發的。並且將PureMVC框架重新編碼了一遍並加入中文的個人理解，方便讀者理解。
+這個例子是對照[PureMVC框架在Unity中的應用例子](https://github.com/kenrivcn/PureMVC_Demo)開發的。
+
+此外PureMVC框架中的所有代碼也重新code了一遍，並加入了注譯，方便讀者理解。
 
 # 介紹
 PureMVC是MVC框架的一種實現，它在MVC的基础上引入了4種設計模式
@@ -54,7 +56,7 @@ A. Proxy相當於Model，它與Model是同源的，是Model的一個代理人。
 
 Q. 為甚麼Command也要在View中注冊Observer?
 
-A. 個人認為是為了管理方便，如果在Command中額外再創建一個ObserverMap，那麼就有兩個地方都需要管理監聽。直接將所有監聽的責任全部交由View來處理，更加方便管理。
+A. 個人認為是為了方便管理。如果在Command中創建一個ObserverMap管理事件的監聽並執行Command，那麼就會出現兩個地方都需要維護通知系統。直接將所有監聽的責任全部交由View來處理，更加方便。
 
 # 參考資料
 - [Github - PureMVC](https://github.com/PureMVC/puremvc-csharp-standard-framework)
