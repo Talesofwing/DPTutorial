@@ -48,7 +48,6 @@ PureMVC中包含了Notifier、Observer以及Notification三個類來實現通知
 是Controller、View、Model的一個管理者，他提供了所有接口，除了Command會用到外，也方便外部的調用，例如在例子中的Application就調用了Facade中的Launch，來執行啟動的操作。
 
 # 在學習過程中遇到的問題以及思考
-## Command vs Proxy vs Mediator
 Q. 為甚麼在Model層中的是Proxy? 而在View層中的是Mediator?
 
 A. Proxy相當於Model，它與Model是同源的，是Model的一個代理人。Proxy與Model之間的交互不會有第三者的參與。而Mediator所封裝的是對象與對象之間的交互，它不是View的代理人，而是一個中介，對象的操作可能需要調用第三者的函數。
