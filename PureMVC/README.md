@@ -7,6 +7,8 @@ Unity version: 2020.3.14f1
 
 此外PureMVC框架中的所有代碼也重新code了一遍，並加入了注譯，方便讀者理解。
 
+另外MVC框架個人認為在游戲中的主要應用是在UI層面上的。Model中的數據可以通過Proxy來隔離，這樣在設計UI系統時也不會影響到原先的Model。
+
 # 介紹
 PureMVC是MVC框架的一種實現，它在MVC的基础上引入了4種設計模式
 - Proxy
