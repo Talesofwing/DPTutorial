@@ -52,7 +52,18 @@ PureMVC中包含了Notifier、Observer以及Notification三個類來實現通知
 是Controller、View、Model的一個管理者，他提供了所有接口，除了Command會用到外，也方便外部的調用，例如在例子中的Application就調用了Facade中的Launch，來執行啟動的操作。
 
 # 例子中的流程
-
+- Application.cs 是整個App的入口。它會調用MyFacade中的Launch來啟動框架
+    - Facade在創建時會自動初始化Controller、View、Model
+- 在MyFacade中會注冊所需的Command以及Proxy，然後發送`START_UP`的Notification
+- `START_UP`事件會執行StartUpCommand，注冊Mediator並顯示頁面，第一次調用時會發送
+    - `REFRESH_REWARD_POOL` : 刷新獎品池
+    - `REFRESH_PLAYE_DATA` :刷新用戶數據
+    - `REFRESH_REWARD_UI` : 刷新獎品池UI
+- 當點擊"隨機獲取"後，發送`PLAY`事件，執行PlayCommand，獲得隨機的獎品，並且發送
+    - `REFRESH_REWARD_POOL` : 刷新獎品池
+    - `REFRESH_REWARD_UI` : 刷新獎品池UI
+    - `REWARD_TIP_UI` : 顯示提示UI
+    - `REFRESH_PLAYER_DATA` : 刷新用戶數據
 
 # 在學習過程中遇到的問題以及思考
 Q. 為甚麼在Model層中的是Proxy? 而在View層中的是Mediator?
