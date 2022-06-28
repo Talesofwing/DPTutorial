@@ -2,6 +2,9 @@
 
 public class GameObjectUtility {
 
+    /// <summary>
+    /// 從Resources文件中找到對應的name，並創建
+    /// </summary>
     public static GameObject CreateGameObject (string name, Transform parent = null) {
         Debug.Log (name);
         GameObject obj = GameObject.Instantiate(Resources.Load (name)) as GameObject;
@@ -20,6 +23,9 @@ public class GameObjectUtility {
         return obj;
     }
 
+    /// <summary>
+    /// 創建一份新的target GameObject
+    /// </summary>
     public static GameObject CreateGameObject (GameObject target, Transform parent = null) {
         if (target == null) {
             Debug.LogError("無法創建空游戲對象");

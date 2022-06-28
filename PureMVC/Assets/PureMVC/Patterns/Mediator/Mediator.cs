@@ -1,10 +1,10 @@
-using System;
-using System.Collections.Generic;
 using PureMVC.Interfaces;
 using PureMVC.Patterns.Observer;
 
 namespace PureMVC.Patterns.Mediator {
 
+    // IMediator的實現
+    // 因為會發送事件，所以也是Notifier
     public class Mediator : Notifier, IMediator {
         public static string NAME = "Mediator";
 

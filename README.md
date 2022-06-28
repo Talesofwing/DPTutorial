@@ -34,11 +34,11 @@ Unity version: 2020.3.14f1
 - [各例子 - UML圖](https://drive.google.com/file/d/1CqL6Sq6a-bgfTyaOKfM-8fHHSPiz7__c/view?usp=sharing)
 - [各模式 - UML圖](https://drive.google.com/file/d/1D7yD7JGq0hg27aaI119C5fkF-1OxQUXH/view?usp=sharing)
 - [UML圖基础](https://drive.google.com/file/d/1BifQQ95Nwhx1cPpAIjn40Tq1Wa2-H9ss/view?usp=sharing)
+- [The Catalog of Design Patterns](https://refactoringguru.cn/design-patterns/catalog)
 - Book - 设计模式与游戏完美开发
 - Book - Head First Design Patterns
 - Book - 大话设计模式
 - Video - https://www.sikiedu.com/course/54 (這個教程是基於「设计模式与游戏完美开发」的，建議直接啃書，因為視頻教得很爛...)
-
 建議先看Head First Design Patterns。
 
 # 原則 (Principles)

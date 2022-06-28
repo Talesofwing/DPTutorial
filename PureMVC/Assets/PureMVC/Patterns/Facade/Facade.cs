@@ -2,10 +2,14 @@ using System;
 using PureMVC.Core;
 using PureMVC.Interfaces;
 using PureMVC.Patterns.Observer;
-using UnityEngine;
 
 namespace PureMVC.Patterns.Facade {
 
+    // IFacade的實現
+    // 保存了Controller, Model, View的引用，並提供了3者的接口
+    // 是一個單例
+    
+    // Q. 為甚麼Facade不繼承Notifier?
     public class Facade : IFacade {
         protected static IFacade instance;
         

@@ -2,6 +2,8 @@ using System;
 using System.Collections.Concurrent;
 using PureMVC.Interfaces;
 
+// PureMVC的三大核心之一
+// 相當於一個管理類，保存了Proxy的Map
 namespace PureMVC.Core {
 
     public class Model : IModel {

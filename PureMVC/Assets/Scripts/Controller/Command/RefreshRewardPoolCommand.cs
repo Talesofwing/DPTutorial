@@ -2,6 +2,9 @@
 using PureMVC.Patterns.Command;
 using UnityEngine;
 
+/// <summary>
+/// 刷新獎品池中的獎品，並發送創建頁面的事件
+/// </summary>
 public class RefreshRewardPoolCommand : SimpleCommand {
 
    public override void Execute (INotification notification) {

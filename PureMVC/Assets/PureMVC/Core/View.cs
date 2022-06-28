@@ -3,15 +3,16 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using PureMVC.Interfaces;
 using PureMVC.Patterns.Observer;
-using UnityEngine;
 
+// PureMVC的三大核心之一
+// 相當於一個管理類，保存了Mediaotr和Observer的Map
 namespace PureMVC.Core {
 
     public class View : IView {
         protected const string SingletonMsg = "View Singleton already constructed!";
 
         protected readonly ConcurrentDictionary<string, IMediator> mediatorMap;
-        protected readonly ConcurrentDictionary<string, IList<IObserver>> observerMap;
+        protected readonly ConcurrentDictionary<string, IList<IObserver>> observerMap;    // 一個事件可能會有多個感興趣的Observer，所以用List保存
         protected static IView instance;
 
         protected virtual void InitializeView () { }
@@ -67,6 +68,9 @@ namespace PureMVC.Core {
             }
         }
 
+        /// <summary>
+        /// 注冊Mediator時，會將Mediator感興趣的Notification自動注冊到Observer中
+        /// </summary>
         public void RegisterMediator (IMediator mediator) {
             if (mediatorMap.TryAdd (mediator.MediatorName, mediator)) {
                 var interests = mediator.ListNotificationInterests ();

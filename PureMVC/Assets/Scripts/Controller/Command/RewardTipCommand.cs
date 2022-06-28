@@ -2,6 +2,9 @@
 using PureMVC.Patterns.Command;
 using UnityEngine;
 
+/// <summary>
+/// 顯示RewardTip頁面的Command
+/// </summary>
 public class RewardTipCommand : SimpleCommand {
    
    public override void Execute (INotification notification) {

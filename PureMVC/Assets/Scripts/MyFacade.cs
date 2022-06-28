@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
 
+/// <summary>
+/// 整個框架的入口
+/// </summary>
 public class MyFacade : PureMVC.Patterns.Facade.Facade {
     public const string START_UP = "START_UP";
     public const string CREATE_BONUS_ITEMS = "CREATE_BONUS_ITEMS";
@@ -18,6 +21,10 @@ public class MyFacade : PureMVC.Patterns.Facade.Facade {
         return instance as MyFacade;
     }
 
+    /// <summary>
+    /// 調用的入口
+    /// 注意: Facade在創建時，會自動初始化Controller、View、Model
+    /// </summary>
     public void Launch () {
         Debug.Log ("Launch");
 
@@ -27,6 +34,7 @@ public class MyFacade : PureMVC.Patterns.Facade.Facade {
     protected override void InitializeController () {
         base.InitializeController ();
 
+        // 注冊所需的Command
         RegisterCommand (START_UP, ()=>new StartUpCommand());
         RegisterCommand (REFRESH_BONUS_ITEMS, () => new RefreshRewardPoolCommand());
         RegisterCommand (PLAY, () => new PlayCommand());
@@ -36,6 +44,7 @@ public class MyFacade : PureMVC.Patterns.Facade.Facade {
     protected override void InitializeModel () {
         base.InitializeModel ();
         
+        // 注冊所需的Proxy
         RegisterProxy (new BonusProxy (BonusProxy.NAME));
         RegisterProxy (new PlayerDataProxy (PlayerDataProxy.NAME));
     }

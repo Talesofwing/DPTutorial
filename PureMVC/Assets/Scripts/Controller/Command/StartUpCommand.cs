@@ -2,6 +2,10 @@
 using PureMVC.Patterns.Command;
 using UnityEngine;
 
+/// <summary>
+/// 程序啟動的Command
+/// 可以在這裏注冊Mediator
+/// </summary>
 public class StartUpCommand : SimpleCommand {
    
    public override void Execute (INotification notification) {

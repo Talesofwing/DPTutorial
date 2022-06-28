@@ -1,5 +1,6 @@
 namespace PureMVC.Interfaces {
 
+    // View的接口類
     public interface IView {
         void RegisterObserver (string notificationName, IObserver observer);
         void RemoveObserver (string notificationName, object notifyContext);

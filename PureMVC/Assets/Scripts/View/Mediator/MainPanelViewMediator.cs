@@ -14,6 +14,7 @@ public class MainPanelViewMediator : PureMVC.Patterns.Mediator.Mediator {
     public MainPanelViewMediator (object viewComponent = null) :
             base (NAME, viewComponent) {
 
+        // 獲取UI以及Data的Proxy
         _view = ((GameObject)ViewComponent).GetComponent<MainPanelView> ();
         Debug.Log ("Panel Mediator");
         _playerDataProxy = PureMVC.Patterns.Facade.Facade.GetInstance (() => new Facade ())
@@ -31,8 +32,6 @@ public class MainPanelViewMediator : PureMVC.Patterns.Mediator.Mediator {
     public override void HandleNotification (INotification notification) {
         switch (notification.Name) {
             case MyFacade.REFRESH_BONUS_UI:
-                Debug.Log ("REFRESH_BONUS_UI");
-
                 if (!_view.isActiveAndEnabled) {
                     _view.gameObject.SetActive (true);
                 }

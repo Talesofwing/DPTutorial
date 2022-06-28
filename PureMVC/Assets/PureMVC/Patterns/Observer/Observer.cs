@@ -3,6 +3,8 @@ using PureMVC.Interfaces;
 
 namespace PureMVC.Patterns.Observer {
 
+    // IObserver的實現
+    // 保存callback以及
     public class Observer : IObserver {
         public Action<INotification> NotifyMethod { get; set; }    // callback
         public object NotifyContext { get; set; }        // 關注的主題 (一般是Controller)
