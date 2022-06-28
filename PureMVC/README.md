@@ -5,6 +5,8 @@ Unity version: 2020.3.14f1
 # 前言
 這個例子是對照[PureMVC框架在Unity中的應用例子](https://github.com/kenrivcn/PureMVC_Demo)開發的。
 
+PureMVC框架是依照[Github - PureMVC](https://github.com/PureMVC/puremvc-csharp-standard-framework)來重新編寫了一遍。因為作者認為，跟著寫會加深印象以及理解(邊寫邊思考)。
+
 此外PureMVC框架中的所有代碼也重新code了一遍，並加入了注譯，方便讀者理解。
 
 另外MVC框架個人認為在游戲中的主要應用是在UI層面上的。Model中的數據可以通過Proxy來隔離，這樣在設計UI系統時也不會影響到原先的Model。
